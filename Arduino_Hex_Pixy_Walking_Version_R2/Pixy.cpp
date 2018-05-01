@@ -23,8 +23,8 @@ void read_pixy_data()
       /* find data seperation points */
       int point_0 = PixySentance.indexOf("b");
       int point_1 = PixySentance.indexOf(",", point_0 + 1);
-      int point_2 = PixySentance.indexOf(",", point_1 + 1);
-      int point_3 = PixySentance.indexOf(",", point_2 + 1);
+      int point_2 = PixySentance.indexOf(":", point_1 + 1);
+      int point_3 = PixySentance.indexOf(":", point_2 + 1);
       int point_4 = PixySentance.indexOf("!", point_3 + 1); 
       
        /* store pan & tilt error, width & height from Pixy as strings */
