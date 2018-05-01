@@ -12,12 +12,15 @@ Pixy pixy;
 void setup()
 {
   Serial.begin(115200);
+  pixy.init();
 }
 
 void loop()
-{ 
+{
+  static int i = 0;
   int j;
   uint16_t blocks;
+  char buf[32];
   int32_t panError, tiltError;
   
   blocks = pixy.getBlocks();
@@ -26,6 +29,11 @@ void loop()
   {
     panError = X_CENTER-pixy.blocks[0].x;
     tiltError = pixy.blocks[0].y-Y_CENTER;
+    i++;
+    
+    // do this (print) every 50 frames because printing every
+    // frame would bog down the Arduino
+    if (i%50==0)
    
     Serial.print("b");
     Serial.print(panError);
